@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1_vowels</title>
 </head>
+
 <body>
     <script>
         'use strict'
-        let strPl=prompt('Введите строку:')
+        let strPl = prompt('Введите строку:')
         //let strPl='This website is for losers LOL!'     
-        function delVow (str) {
-            let vow='aeiouAEIOU';
-            for (let i=0; i<str.length; i++){
-                if ((vow.indexOf(str[i]))!==-1)
-                    str=str.replace(str[i], '')
+        let delVow = str => {
+            let vow = 'aeiouAEIOU';
+            for (let i = 0; i < str.length; i++) {
+                if ((vow.indexOf(str[i])) !== -1)
+                    str = str.replace(str[i], '')
             }
             return str;
 
@@ -33,8 +35,8 @@
         // let strArrV=strArr.filter(delVowel);
         // alert(strArrV);
         // console.log(strArrV.tostr());
-        
     </script>
-    
+
 </body>
+
 </html>
