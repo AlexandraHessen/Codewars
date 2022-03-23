@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//1
+function opposite(number) {
+  return -number
+}
+
+console.log(opposite (1));
+console.log(opposite(14));
+console.log(opposite(-34));
+
+//2
+    function basicOp(operation, value1, value2)
+    {
+        return eval(value1+operation+value2);
+    }
+
+        console.log(basicOp('+', 4, 7));
+        console.log(basicOp('-', 15, 18));
+        console.log(basicOp('*', 5, 5));
+        console.log(basicOp('/', 49, 7));
+
+//3
+function printArray(array){
+    return array.toString();
+}
+console.log(printArray(["h","o","l","a"]));
+
+//4
+function rentalCarCost(d) {
+    let price=40;
+    if (d>=3){
+        if(d>=7){
+            return d*price-50
+        }
+        return d*price-20
+    } else {
+        return d*price
+    }
+  }
+
+  console.log(rentalCarCost(1));
+  console.log(rentalCarCost(3));
+  console.log(rentalCarCost(4));
+  console.log(rentalCarCost(5));
+  console.log(rentalCarCost(7));
+
+//5
+    function getMiddle(s){
+    if (s.length%2 === 0){
+        return s.substr(s.length/2-1, 2)
+    } else {
+        return s.substr((Math.floor(s.length/2)), 1)
+    }
+}
+
+console.log(
+    getMiddle("test")
+);
+
+console.log(
+    getMiddle("testing")
+);
+
+//6
+var items1 = [1, 2, 3, 4, 5, 6];
+function isEven(n) {return n % 2 == 0}
+
+function partitionOn(pred, items) {
+    let newArr
+    return items.filter(pred)
+}
+
+console.log(partitionOn(isEven, items1));
+
+
+//7
+function array(arr){
+    if(''||arr.split(',').length<=2){
+        return null
+    }
+
+    return arr.split(',').slice(1, -1).join(' ')
+}
+
+console.log(array("1,2"));
+
+//8
+function prefill(n, v) {
+    // const array1 = [];
+
+// fill with 0 from position 2 until position 4
+// console.log(array1.fill(v, 0, n));
+// expected output: [1, 2, 0, 0]
+  return new Array(n).fill(v)
+}
+
+console.log(prefill(3,1));
+
+//9
+// function crossProduct (vector1, vector2) {
+//   if(Array.isArray(vector1) && Array.isArray(vector2)&& vector1.length ===3 && vector2.length ===3) {
+//     return [ vector1[1] * vector2[2] - vector1[2] * vector2[1], vector1[2] * vector2[0] - vector1[0] * vector2[2], vector1[0] * vector2[1] - vector1[1] * vector2[0] ]; 
+//   }
+//   else {
+//     throw "Arguments are not 3D vectors!";
+//   }
+// }
+
+function crossProduct (vector1, vector2) {
+    if(Array.isArray(vector1)
+        && vector1.length ===3
+        && Array.isArray(vector2)
+        && vector2.length ===3){ 
+        return     [vector1[1] * vector2[2] - vector1[2] * vector2[1],
+                    vector1[2] * vector2[0] - vector1[0] * vector2[2],
+                    vector1[0] * vector2[1] - vector1[1] * vector2[0]] 
+    } else {
+        throw "Arguments are not 3D vectors!"
+    }
+}
+
+//13
+
+function always (n) {
+  return () => n;
+}
+
+//https://www.codewars.com/kata/55f8a9c06c018a0d6e000132/train/javascript
+function validatePIN (pin) {
+    if(pin.length===4||pin.length===6){
+        if (Number(pin)){
+            return true
+        } else {
+        return false
+    }
+    } else {
+        return false
+    }
+  //return true or false
+}
+// https://www.codewars.com/kata/57cebe1dc6fdc20c57000ac9/train/javascript
+
+function findShort(s){
+  let arr=s.split(' ')
+  let min=arr[0].length
+  for(let i=0; i<arr.length; i++){
+     min=Math.min(min, arr[i].length)
+  }
+  return min
+}
+
+//https://www.codewars.com/kata/sequence-generator-1
+function sequence(n, pattern) {
+  return (pattern instanceof Function) 
+  ? Array.from(Array(n), pattern) 
+  : Array(n).fill(pattern);
+}
+
+//30 ?
+class Cuboid {
+    constructor(length, width, height) {
+    this.length = length;
+    this.width = width;
+    this.height = height;
+  }
+  //S = 2 (ab + bc + ac)
+  get surfaceArea() {
+    return 2 * (this.length * this.width + this.length * this.height + this.width * this.height)
+  }
+
+  //V = a × b × h
+  get volume() {
+    return this.length * this.width * this.height;
+  }
+}
+class Cube extends Cuboid {
+  constructor(length) {
+    super(length, length, length);
+  }
+}
+
+//29
+class Shark extends Animal {
+  constructor(name, age, status) {
+    super(name, age, 0, "shark", status);
+  }
+}
+
+class Cat extends Animal {
+  constructor(name, age, status) {
+    super(name, age, 4, "cat", status);
+  }
+  introduce() {
+    return super.introduce() + '  Meow meow!';
+  }
+}
+
+class Dog extends Animal {
+  constructor(name, age, status, master) {
+    super(name, age, 4, "dog", status);
+    this.master = master;
+  }
+  greetMaster() {
+    return `Hello ${this.master}`;
+  }
+}
+
+function digital_root(n) {
+  if (n < 10) return n
+  return digital_root(n % 10 + digital_root(Math.floor(n / 10)))
+}
+
+//8
+function prefill(n, v) {
+  if ( !/^\d+$/.test(''+n)  ) 
+     throw new TypeError(n+" is invalid");
+  return Array(+n).fill(v);
+}
+
+function prefill(n, v) {
+  if(parseInt(n) != Math.abs(n)) {
+    throw new TypeError(`${n} is invalid`)
+  }
+
+  return (n == 0) ? [] : new Array(n).fill(v)
+}
+
+//12
+function createFunctions(n) {
+  const callbacks = [];
+
+  for (let i=0; i<n; i++) {
+    callbacks.push(()=> i);
+  }
+  
+  return callbacks;
+}
+
+//
+function createSecretHolder(secret) {
+  return {
+    getSecret: () => secret,
+    setSecret: (s) => secret = s
+  };
+}
+function createSecretHolder(secret) {
+    getSecret: () => secret
+    setSecret: (s) => (secret = s)
+}
+
+const isSantaClausable = obj =>
+[`sayHoHoHo`, `distributeGifts`, `goDownTheChimney`].every(val => typeof obj[val] === `function`);
+
+function isSantaClausable(obj) {
+  return ['sayHoHoHo', 'distributeGifts', 'goDownTheChimney'].every((method) => typeof obj[method] === 'function');
+}
+
+//26
+Array.prototype.square = function(){
+  return this.map(num => Math.pow(num, 2));
+}
+
+Array.prototype.cube = function(){
+  return this.map(num => Math.pow(num, 3));
+}
+
+Array.prototype.average = function(){
+  return this.sum() / this.length;
+}
+
+Array.prototype.sum = function(){
+  return this.reduce((num1, num2) => num1 + num2, 0);
+}
+
+Array.prototype.even = function(){
+  return this.filter(num => num % 2 === 0);
+}
+
+Array.prototype.odd = function(){
+  return this.filter(num => num % 2 !== 0);
+}
+
+//
+const createMessage = str => n => {
+  if (n === undefined) { return str;}
+  return createMessage(str+ " "+n);
+}
+
+function createMessage(str) {
+    return function(next){
+      (next === undefined)
+      ? str
+      : createMessage(str + " "+ next);
+    }
+}
+
+    </script>
+</body>
+</html>
+
+
+
